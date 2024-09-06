@@ -1,0 +1,17 @@
+{
+  "name": "task-manager-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env.production index.js",
+    "dev": "nodemon --env-file=.env.development index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sahan C Poojari",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.6.1"
+  }
+}

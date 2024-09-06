@@ -26,9 +26,7 @@ class InitConfig {
     }
 
     initializeControllers(app) {
-        app.use("/", (req, res) => {
-            res.send("Hello from Task Manger");
-        })
+        app.use("/cred", require('./routes/authRoutes'));
     }
 }
 

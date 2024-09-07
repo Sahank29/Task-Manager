@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Auth = require('../models/authModel');
 const { emailValidator, passwordValidator } = require('../utils/validators');
-const { registerUserService } = require('../services/authService');
+const { registerUserService, loginUserService } = require('../services/authService');
 
 //@desc Register a user
 //@route POST /cred/register

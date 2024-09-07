@@ -1,6 +1,5 @@
-// services/authService.js
-
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const Auth = require('../models/authModel');
 
 const registerUserService = async (email, password) => {
@@ -25,7 +24,7 @@ const loginUserService = async (email, password) => {
                     id: user.id,
                 },
             },
-            process.env.ACCESS_TOKEN_SECRET, 
+            process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: "15m" }
         );
         return { accessToken, user };

@@ -1,2 +1,4 @@
 const InitConfig = require('./app');
-new InitConfig();
+
+const initConfig = new InitConfig();
+initConfig.initializeAll();

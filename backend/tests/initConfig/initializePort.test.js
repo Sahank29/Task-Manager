@@ -1,5 +1,3 @@
-// __tests__/initConfig/initializePort.test.js
-
 const express = require('express');
 const InitConfig = require('../../app');
 require('../setupTests');

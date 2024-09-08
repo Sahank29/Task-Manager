@@ -9,7 +9,6 @@ const connectDb = async () => {
             connect.connection.name
         );
     } catch (err) {
-        console.error("Connection to DB Failed", err);
         process.exit(1);
     }
 };

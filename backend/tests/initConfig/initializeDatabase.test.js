@@ -1,5 +1,3 @@
-// __tests__/initConfig/initializeDatabase.test.js
-
 const InitConfig = require('../../app');
 const connectDB = require('../../config/dbConnection');
 require('../setupTests');
@@ -11,7 +9,6 @@ describe('InitConfig - Database Initialization', () => {
         const initConfig = new InitConfig();
         initConfig.initializeDatabase();
 
-        // Ensure that the connectDB function is called
         expect(connectDB).toHaveBeenCalled();
     });
 });

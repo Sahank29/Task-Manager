@@ -2,7 +2,6 @@ const InitConfig = require('../../app');
 const authRoutes = require('../../routes/authRoutes');
 require('../setupTests');
 
-// Mock express
 jest.mock('express', () => {
     const mockRouter = {
         post: jest.fn(),
@@ -14,7 +13,7 @@ jest.mock('express', () => {
     });
 
     expressMock.Router = jest.fn(() => mockRouter);
-    expressMock.json = jest.fn(); 
+    expressMock.json = jest.fn();
 
     return expressMock;
 });
@@ -32,6 +31,6 @@ describe('InitConfig - Controller Initialization', () => {
     });
 
     it('should initialize controllers', () => {
-        expect(useMock).toHaveBeenCalledWith('/cred', authRoutes);
+        expect(useMock).toHaveBeenCalledWith('/api/cred', authRoutes);
     });
 });

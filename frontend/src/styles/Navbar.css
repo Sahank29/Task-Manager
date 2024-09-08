@@ -1,0 +1,41 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Adjust alignment to center */
+  background-color: #3273f5;
+  padding: 0.7rem;
+}
+
+.nav-button-div {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #fff;
+  color: #3273f5;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.navbar a.active-link {
+  color: #007bff;
+  background-color: white;
+  border-radius: 5px;
+}

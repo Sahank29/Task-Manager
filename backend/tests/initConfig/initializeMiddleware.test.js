@@ -1,5 +1,3 @@
-// __tests__/initConfig/initializeMiddleware.test.js
-
 const express = require('express');
 const InitConfig = require('../../app');
 require('../setupTests');
@@ -20,7 +18,6 @@ describe('InitConfig - Middleware Initialization', () => {
         const initConfig = new InitConfig();
         initConfig.initializeMiddleware();
 
-        // Ensure express.json() middleware was added
         expect(useMock).toHaveBeenCalledWith(express.json());
     });
 });

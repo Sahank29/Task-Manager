@@ -30,14 +30,15 @@ class InitConfig {
     }
 
     initializeControllers() {
-        this.app.use("/cred", require('./routes/authRoutes'));
+        this.app.use("/api/cred", require('./routes/authRoutes'));
+        this.app.use("/api/task", require('./routes/taskRoutes'));
     }
 
     getApp() {
         return this.app;
     }
 
-    getPort() { 
+    getPort() {
         return this.port;
     }
 
@@ -46,7 +47,6 @@ class InitConfig {
             return new Promise((resolve, reject) => {
                 this.server.close((err) => {
                     if (err) return reject(err);
-                    console.log("Server closed.");
                     resolve();
                 });
             });

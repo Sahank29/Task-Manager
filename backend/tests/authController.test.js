@@ -15,10 +15,10 @@ afterAll(async () => {
     await initConfig.closeServer();
 });
 
-describe('POST /cred/register', () => {
+describe('POST /api/cred/register', () => {
     it('should return 102 when password is invalid', async () => {
         const res = await request(app)
-            .post('/cred/register')
+            .post('/api/cred/register')
             .send({ email: 'wronguser@example.com', password: 'wrongpass' });
 
         expect(res.statusCode).toBe(200);
@@ -27,7 +27,7 @@ describe('POST /cred/register', () => {
 
     it('should return 102 when email is invalid', async () => {
         const res = await request(app)
-            .post('/cred/register')
+            .post('/api/cred/register')
             .send({ email: 'wronguser@.com', password: 'Wrong1assword' });
 
         expect(res.statusCode).toBe(200);
@@ -36,7 +36,7 @@ describe('POST /cred/register', () => {
 
     it('should return 103 for User already exists', async () => {
         const res = await request(app)
-            .post('/cred/register')
+            .post('/api/cred/register')
             .send({ email: 'wronguser@example.com', password: 'Wrong1assword' });
 
         expect(res.statusCode).toBe(200);
@@ -50,7 +50,7 @@ describe('POST /cred/register', () => {
         };
 
         const res = await request(app)
-            .post('/cred/register')
+            .post('/api/cred/register')
             .send(user);
 
         expect(res.statusCode).toBe(200);
@@ -58,10 +58,10 @@ describe('POST /cred/register', () => {
     });
 });
 
-describe('POST /cred/login', () => {
+describe('POST /api/cred/login', () => {
     it('should return 107 when email or password is missing', async () => {
         const res = await request(app)
-            .post('/cred/login')
+            .post('/api/cred/login')
             .send({ email: 'test@example.com' });
 
         expect(res.statusCode).toBe(200);
@@ -75,7 +75,7 @@ describe('POST /cred/login', () => {
         };
 
         const res = await request(app)
-            .post('/cred/login')
+            .post('/api/cred/login')
             .send(user);
 
         expect(res.statusCode).toBe(200);
@@ -85,7 +85,7 @@ describe('POST /cred/login', () => {
 
     it('should return 105 for invalid credentials', async () => {
         const res = await request(app)
-            .post('/cred/login')
+            .post('/api/cred/login')
             .send({ email: 'sahank29@gmail.com', password: 'Wrong1assword' });
 
         expect(res.statusCode).toBe(200);

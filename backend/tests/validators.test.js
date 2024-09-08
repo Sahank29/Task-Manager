@@ -1,7 +1,5 @@
-// __tests__/validators.test.js
-
 const { emailValidator, passwordValidator } = require('../utils/validators');
-require('./setupTests'); // Import common setup if needed
+require('./setupTests');
 
 describe('Email Validator', () => {
     it('should return true for valid emails', () => {

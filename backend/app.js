@@ -1,34 +1,56 @@
 const express = require('express');
-
 const connectDB = require('./config/dbConnection');
 
 class InitConfig {
     constructor() {
-        const app = express();
-        const port = process.env.PORT || 2024;
-
-        this.initializePort(app, port);
-        this.initializeDatabase();
-        this.initializeMidddleware(app);
-        this.initializeControllers(app);
+        this.app = express();
+        this.port = process.env.PORT || 2024;
+        this.server = null;
     }
 
-    initializePort(app, port) {
-        app.listen(port, () => console.log("App running on Port", port));
+    initializeAll() {
+        this.initializePort();
+        this.initializeDatabase();
+        this.initializeMiddleware();
+        this.initializeControllers();
+    }
+
+    initializePort() {
+        this.server = this.app.listen(this.port, () => {
+            console.log("App running on Port", this.port);
+        });
     }
 
     initializeDatabase() {
         connectDB();
     }
 
-    initializeMidddleware(app) {
-        app.use(express.json());
+    initializeMiddleware() {
+        this.app.use(express.json());
     }
 
-    initializeControllers(app) {
-        app.use("/", (req, res) => {
-            res.send("Hello from Task Manger");
-        })
+    initializeControllers() {
+        this.app.use("/api/cred", require('./routes/authRoutes'));
+        this.app.use("/api/task", require('./routes/taskRoutes'));
+    }
+
+    getApp() {
+        return this.app;
+    }
+
+    getPort() {
+        return this.port;
+    }
+
+    async closeServer() {
+        if (this.server) {
+            return new Promise((resolve, reject) => {
+                this.server.close((err) => {
+                    if (err) return reject(err);
+                    resolve();
+                });
+            });
+        }
     }
 }
 

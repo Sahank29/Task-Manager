@@ -4,6 +4,7 @@ import "../styles/Modal.css";
 const Modal = ({ task, isEditing, onSave, onClose }) => {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
+  const [error, setError] = useState(""); // Add error state
 
   useEffect(() => {
     setTitle(task.title);
@@ -11,6 +12,11 @@ const Modal = ({ task, isEditing, onSave, onClose }) => {
   }, [task]);
 
   const handleSave = () => {
+    if (!title.trim() || !description.trim()) {
+      setError("Title and Description cannot be empty.");
+      return;
+    }
+    setError(""); 
     onSave({ ...task, title, description });
   };
 
@@ -27,6 +33,7 @@ const Modal = ({ task, isEditing, onSave, onClose }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            {error && <p className="error-message">{error}</p>}{" "}
             <div className="modal-actions">
               <button onClick={handleSave}>Save</button>
               <button onClick={onClose}>Cancel</button>
